@@ -1,23 +1,25 @@
 # desafiosBackendAguirreFunes
 
-Primera entrega (rama "desafio-1"):
+####Primera entrega (rama _"desafio-1"_)
 
-    Se realizó la creación de una clase "ProductManager" la cual gestionará un conjunto de productos:
+Se realizó la creación de una clase "ProductManager" la cual gestionará un conjunto de productos.
 
-        La misma incluye un constructor con el elemento products siendo un array vacío. Cada product cuenta con las propiedades de:
-                                - title
-                                - description
-                                - price
-                                - thumbnail
-                                - code
-                                - stock
-                                - id
+La misma incluye un constructor con el elemento 'products' siendo un array vacío. Cada product cuenta con las propiedades de:
 
-        A su vez se crearon los siguientos metodos:
-                                                    - addProduct -> agregara un producto al array `products` inicial siendo obligatorio todas los campos de las propiedades mencionadas anteriormente con excepcion del id que se generara automaticamente incrementandose automaticamente con cada nuevo elemento y el price que se obtendra mediante formula multiplicando el consumo del producto por el precio por consumo
-                                                    - getProducts -> devolvera todos los productos creados hasta ese momento
-                                                    - getProductById -> buscar en el array el producto que coincida con el id que se le otorgue y lo devolvera. En caso de no encontrar ningun producto que coincida con el id requerido devolvera un mensaje de error.
+- title
+- description
+- price
+- thumbnail
+- code
+- stock
+- id
 
-    Se realizaron pruebas de todo esto en el archivo index.js
+A su vez se crearon los siguientos metodos:
 
-    Para ejecutar estas pruebas es necesario correr en consola el siguiente comando: "node src/index.js"
+- _addProduct_ -> agregara un producto al array 'products' inicial siendo obligatorio todas los campos de las propiedades mencionadas anteriormente con excepcion del id que se generara automaticamente incrementandose automaticamente con cada nuevo elemento y el price que se obtendra mediante formula multiplicando el consumo del producto por el precio por consumo
+- _getProducts_ -> devolvera todos los productos creados hasta ese momento
+- _getProductById_ -> buscar en el array el producto que coincida con el id que se le otorgue y lo devolvera. En caso de no encontrar ningun producto que coincida con el id requerido devolvera un mensaje de error.
+
+Se realizaron pruebas en el archivo index.js
+
+_Para ejecutar estas pruebas es necesario correr en consola el siguiente comando: "node src/index.js"_
