@@ -1,6 +1,6 @@
 # desafiosBackendAguirreFunes
 
-#### Primera entrega (rama _"desafio-1"_)
+#### Primera entrega (carpeta _"desafio-1"_)
 
 Se realizó la creación de una clase "ProductManager" la cual gestionará un conjunto de productos.
 
@@ -22,4 +22,4 @@ A su vez se crearon los siguientos metodos:
 
 Se realizaron pruebas en el archivo index.js
 
-_Para ejecutar estas pruebas es necesario correr en consola el siguiente comando: "node desafioClase2/src/index.js"_
+_Para ejecutar estas pruebas es necesario correr en consola el siguiente comando: "node desafioClase2/src/indexDesafioClase2.js"_
