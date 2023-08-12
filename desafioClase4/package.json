@@ -1,0 +1,26 @@
+{
+  "name": "desafioclase4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "indexDesafioClase4.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/appDesafioClase4.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SabrinaAguirreFunes/desafiosBackendAguirreFunes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SabrinaAguirreFunes/desafiosBackendAguirreFunes/issues"
+  },
+  "homepage": "https://github.com/SabrinaAguirreFunes/desafiosBackendAguirreFunes#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

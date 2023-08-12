@@ -1,6 +1,6 @@
 # desafiosBackendAguirreFunes
 
-#### Segunda entrega (carpeta _"desafio-2"_)
+#### Segunda entrega (carpeta _"desafioClse3"_)
 
 Se realizó la creación de una clase "ProductManager" la cual gestionará un conjunto de productos.
 
@@ -24,6 +24,6 @@ A su vez se crearon los siguientos metodos:
 - _updateProducts_ -> buscara en el array el producto que coincida con el id y modificara el campo del producto que se desea actualizar.
 - _deleteProducts_ -> buscara en el array el producto que coincida con el id y lo eliminara.
 
-Se realizaron pruebas en el archivo index.js
+Se realizaron pruebas en el archivo indexDesafioClase3.js
 
 _Para ejecutar estas pruebas es necesario correr en consola el siguiente comando: "node desafioClase3/src/indexDesafioClase3.js"_
