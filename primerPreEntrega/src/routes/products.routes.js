@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Product, ProductManager } from "../productManager";
+import { Product, ProductManager } from "../productManager.js";
 
 const prodsRouter = Router();
 let products = new ProductManager("./data/products.json");
@@ -31,25 +31,65 @@ prodsRouter.get("/:pid", async (req, res) => {
 });
 
 prodsRouter.post("/", async (req, res) => {
-  const { code } = req.body;
-  const newProduct = new Product(req.body);
+  const {
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnail,
+  } = req.body;
+
+  const newProduct = new Product(
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnail
+  );
+
   const product = await products.addProduct(newProduct);
   if (!product) {
+    res.status(200).send("Product added successfully");
+  } else {
     res
       .status(400)
       .send("Already existing product, please enter a new product.");
-  } else {
-    res.status(200).send("Product added successfully");
   }
 });
 
 prodsRouter.put("/:pid", async (req, res) => {
+  const {
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnail,
+  } = req.body;
+  const data = {
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnail,
+  };
   const id = parseInt(req.params.pid);
   const prod = await products.getProductsById(id);
 
   if (prod) {
-    await products.updateProduct(id, req.body);
-    res.status(200).send("Product updated seccessfully");
+    await products.updateProduct(id, data);
+    res.status(200).send("Product updated successfully");
   } else {
     res.status(404).send("Product not found");
   }

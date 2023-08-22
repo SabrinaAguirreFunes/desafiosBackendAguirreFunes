@@ -58,10 +58,12 @@ export class ProductManager {
       if (productIndex != -1) {
         this.products[productIndex].title = data.title;
         this.products[productIndex].description = data.description;
-        this.products[productIndex].price = data.price;
-        this.products[productIndex].thumbnail = data.thumbnail;
         this.products[productIndex].code = data.code;
+        this.products[productIndex].price = data.price;
+        this.products[productIndex].status = data.status;
         this.products[productIndex].stock = data.stock;
+        this.products[productIndex].category = data.category;
+        this.products[productIndex].thumbnail = data.thumbnail;
         console.log(this.products[productIndex]);
         await fs.writeFile(this.path, JSON.stringify(this.products));
       } else {
@@ -92,22 +94,43 @@ export class ProductManager {
 }
 
 export class Product {
-  constructor(title, description, price, thumbnail, code, stock) {
+  constructor(
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnail
+  ) {
+    let id_esperado = 0;
+    id_esperado = Product.createIdIncremental();
+    console.log(id_esperado);
+    this.id = id_esperado;
     this.title = title;
     this.description = description;
-    this.price = price;
-    this.thumbnail = thumbnail;
     this.code = code;
+    this.price = price;
+    this.status = status;
     this.stock = stock;
-    this.id = Product.createIdIncremental();
+    this.category = category;
+    this.thumbnail = thumbnail;
   }
 
-  static createIdIncremental() {
-    if (this.idIncremental) {
-      this.idIncremental++;
+  static async createIdIncremental() {
+    this.products = JSON.parse(
+      await fs.readFile("./data/products.json", "utf-8")
+    );
+    let idIncremetal = 1;
+    const maxIndex = this.products.length - 1;
+    console.log(maxIndex);
+
+    if (maxIndex != -1) {
+      idIncremetal = this.products[maxIndex].id + 1;
     } else {
-      this.idIncremental = 1;
+      idIncremetal = 1;
     }
-    return this.idIncremental;
+    return idIncremetal;
   }
 }

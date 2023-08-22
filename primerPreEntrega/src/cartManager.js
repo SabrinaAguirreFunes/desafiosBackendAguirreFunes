@@ -1,18 +1,9 @@
 import { promises as fs } from "fs";
 
 export class Cart {
-  constructor() {
+  constructor(newIdCart) {
     this.cartProducts = [];
-    this.id = CartManager.createIdIncremental();
-  }
-
-  static createIdIncremental() {
-    if (this.idIncremental) {
-      this.idIncremental++;
-    } else {
-      this.idIncremental = 1;
-    }
-    return this.idIncremental;
+    this.id = newIdCart;
   }
 
   addProduct(prodId) {
@@ -44,9 +35,18 @@ export class CartManager {
   }
 
   async addCart() {
-    const newCart = new Cart();
     try {
-      this.carts = JSON.parse(await fs.readFile(this.path, "utf-8"));
+      await this.getCarts();
+
+      let newIdCart = 0;
+
+      if (this.carts.length > 0) {
+        newIdCart = this.carts.length + 1;
+      } else {
+        newIdCart = 1;
+      }
+
+      const newCart = new Cart(newIdCart);
 
       this.carts.push(newCart);
       await fs.writeFile(this.path, JSON.stringify(this.carts));
@@ -73,11 +73,12 @@ export class CartManager {
   }
 
   async addProductToCart(cartId, prodId) {
-    let cart = await this.getCartById(cartId);
-    if (!cart) {
+    let cartData = await this.getCartById(cartId);
+    if (!cartData) {
       console.error("Cart not found");
       return null;
     } else {
+      const cart = Object.assign(new Cart(), cartData);
       cart.addProduct(prodId);
       await fs.writeFile(this.path, JSON.stringify(this.carts));
     }
