@@ -8,7 +8,7 @@ cartsRouter.post("/", async (req, res) => {
   const cart = await carts.addCart();
 
   if (cart) {
-    res.status(200).send(cart);
+    res.status(200).send("Cart added successfully");
   } else {
     res.status(400).send("Error creating cart");
   }

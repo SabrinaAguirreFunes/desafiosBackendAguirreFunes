@@ -104,10 +104,7 @@ export class Product {
     category,
     thumbnail
   ) {
-    let id_esperado = 0;
-    id_esperado = Product.createIdIncremental();
-    console.log(id_esperado);
-    this.id = id_esperado;
+    this.id = Product.createIdIncremental();
     this.title = title;
     this.description = description;
     this.code = code;
@@ -119,18 +116,22 @@ export class Product {
   }
 
   static async createIdIncremental() {
-    this.products = JSON.parse(
-      await fs.readFile("./data/products.json", "utf-8")
-    );
-    let idIncremetal = 1;
-    const maxIndex = this.products.length - 1;
-    console.log(maxIndex);
+    try {
+      const products = JSON.parse(
+        await fs.readFile("./data/products.json", "utf-8")
+      );
+      let idIncremetal = 1;
+      const maxIndex = products.length - 1;
+      console.log(maxIndex);
 
-    if (maxIndex != -1) {
-      idIncremetal = this.products[maxIndex].id + 1;
-    } else {
-      idIncremetal = 1;
+      if (maxIndex != -1) {
+        idIncremetal = products[maxIndex].id + 1;
+      } else {
+        idIncremetal = 1;
+      }
+      return idIncremetal;
+    } catch (error) {
+      console.error(error);
     }
-    return idIncremetal;
   }
 }

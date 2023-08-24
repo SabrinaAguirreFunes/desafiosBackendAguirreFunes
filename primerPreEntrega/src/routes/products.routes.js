@@ -53,7 +53,11 @@ prodsRouter.post("/", async (req, res) => {
     thumbnail
   );
 
+  const productId = await Product.createIdIncremental();
+  newProduct.id = productId;
+
   const product = await products.addProduct(newProduct);
+
   if (!product) {
     res.status(200).send("Product added successfully");
   } else {
