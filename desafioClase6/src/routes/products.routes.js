@@ -31,23 +31,14 @@ prodsRouter.get("/:pid", async (req, res) => {
 });
 
 prodsRouter.post("/", async (req, res) => {
-  const {
-    title,
-    description,
-    code,
-    price,
-    status,
-    stock,
-    category,
-    thumbnail,
-  } = req.body;
+  const { title, description, code, price, stock, category, thumbnail } =
+    req.body;
 
   const newProduct = new Product(
     title,
     description,
     code,
     price,
-    status,
     stock,
     category,
     thumbnail
