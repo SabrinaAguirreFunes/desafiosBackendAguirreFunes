@@ -15,7 +15,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://sabrinaaguirrefunes:love5683@cluster0.wxopz19.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://sabrinaaguirrefunes:password@cluster0.wxopz19.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => console.log("DB connected"))
   .catch(() => console.log("Error en conexion a BDD"));
