@@ -6,6 +6,8 @@ Se creó una base de datos _"Cluster0"_ dentro de MongoDB Atlas y se crearon las
 
 En base a las entregas anteriores, se migró al modelo de persistencia Mongo y mongoose reajustandose para que los servicios funcionarán con los mismos y eliminandose la persistencia por FileSystem.
 
+A su vez, se creo una nueva vista _"chat"_ para poder enviar y visualizar los mensajes.
+
 De acuerdo a lo indicado en clase, no se incorporó DAO para este desafío.
 
 #### Vistas
@@ -15,6 +17,9 @@ De acuerdo a lo indicado en clase, no se incorporó DAO para este desafío.
   - un formulario para agregar productos
   - un formulario para eliminar un producto a partir de un id
   - un listado de todos los productos (el cual se actualiza automaticamente cada vez que se agrega o elimina un producto)
+- ruta _/chat_ -> muestra, utilizando en conjunto handlebars y websocket, una vista con:
+  - un formulario para enviar mensajes
+  - un listado de todos los mensajes en la base de datos (el cual se actualiza automaticamente cada vez que se agrega un mensaje)
 
 #### Rutas
 
