@@ -33,7 +33,7 @@ Se utilizaron las rutas para crear y modificar los productos y carritos mediante
 
 ##### Pasos para ejecutar el servidor
 
-- En primer instancia, se deberá modificar el código de index.js, en el comando mongoose.connect se deberá reemplazar la palabra _password_ por la contraseña proporcionada por el chat de la plataforma de coderhouse.
+- En primer instancia, se deberá modificar el código del archivo index.js, en el comando mongoose.connect (en la URL de la linea 19 de index.js) se deberá reemplazar la palabra _password_ por la contraseña proporcionada por el chat de la plataforma de coderhouse.
 - Luego, en la terminal, se deberá entrar en la carpeta del desafío con el comando _"cd desafioClase8"._
 - Una vez dentro de la carpeta se instalarán las dependencias con el comando: _"npm install"_
 - Finalmente se podrá poner en marcha el servidor con el comando: _"npm run dev"_

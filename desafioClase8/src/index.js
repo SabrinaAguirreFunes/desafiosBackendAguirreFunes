@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import { __dirname } from "./path.js";
 import path from "path";
 import { productsModel } from "./models/products.models.js";
+import { messagesModel } from "./models/messages.models.js";
 import prodsRouter from "./routes/products.routes.js";
 import cartsRouter from "./routes/carts.routes.js";
 
@@ -36,6 +37,7 @@ app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "./views"));
 app.use("/static", express.static(path.join(__dirname, "/public")));
 app.use("/realtimeproducts", express.static(path.join(__dirname, "/public")));
+app.use("/chat", express.static(path.join(__dirname, "/public")));
 
 //Server with express
 const io = new Server(serverExpress);
@@ -87,6 +89,32 @@ io.on("connection", (socket) => {
       console.error(error);
     }
   });
+
+  socket.on("newMessage", async (newMessage) => {
+    const { email, message } = newMessage;
+
+    try {
+      const createMessage = await messagesModel.create({
+        email,
+        message,
+      });
+      console.log("Message added successfully");
+    } catch (error) {
+      console.error("Error creating message");
+    }
+
+    let messages = await messagesModel.find();
+    socket.emit("messageData", messages);
+  });
+
+  socket.on("initialMessages", async () => {
+    try {
+      let messages = await messagesModel.find();
+      socket.emit("messageData", messages);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 });
 
 let prodsStatic = [];
@@ -122,5 +150,13 @@ app.get("/realtimeproducts", (req, res) => {
     css: "style.css",
     title: "Products",
     js: "realTimeProducts.js",
+  });
+});
+
+app.get("/chat", (req, res) => {
+  res.render("chat", {
+    css: "style.css",
+    title: "Chat",
+    js: "chat.js",
   });
 });
