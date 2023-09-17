@@ -29,6 +29,10 @@ De acuerdo a lo indicado en clase, no se desarrallaron las nuevas vistas ni los 
 - ruta POST _/api/carts/_ -> creara un nuevo carrito con un id y un array vacio para los productos
 - ruta GET _/api/carts/:cid_ -> devolvera los datos del carrito del id indicado por params.
 - ruta POST _/api/carts/:cid/product/:pid_ -> agregara al carrito del id indicado en params, el producto del id indicado en params. Se guardara en el carrito solo el id del producto y una variable de cantidad. Si el producto ya existiera en ese carrito, se sumara 1 en la variable cantidad.
+- ruta DELETE _/api/carts/:cid_ -> eliminara los productos del carrito del id indicado por params (pasara a ser products un array vacio como al crear un carrito).
+- ruta DELETE _/api/carts/:cid/product/:pid_ -> eliminar el producto del id indicado en params del carrito del id indicado en params.
+- ruta PUT _/api/carts/:cid_ -> actualizara el array de productos del carrito del id indicado por params con el array de productos pasado en el body.
+- ruta PUT _/api/carts/:cid/product/:pid_ -> actualiara unicamente la cantidad del producto del id indicado en params del carrito del id indicado en params.
 
 Se utilizaron las rutas para crear y modificar los productos y carritos mediante POSTMAN.
 
