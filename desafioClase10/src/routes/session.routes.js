@@ -16,6 +16,13 @@ sessionRouter.post("/login", async (req, res) => {
       if (user.password == password) {
         req.session.login = true;
         req.session.email = email;
+
+        //utilizo cookies para poder mostrar los datos del usuario en las vistas
+        res.cookie("userData", {
+          firstName: user.first_name,
+          lastName: user.last_name,
+          rol: user.rol,
+        });
         res.redirect("/static", 200, { respuesta: "Login ok" });
       } else {
         req.session.error = "Invalid password";
@@ -43,7 +50,7 @@ sessionRouter.get("/logout", (req, res) => {
   if (req.session.login) {
     req.session.destroy();
   }
-  res.redirect("/api/sessions/login", 200, { respuesta: "Logged out user" });
+  res.redirect("/logout", 200, { respuesta: "Logged out user" });
 });
 
 export default sessionRouter;

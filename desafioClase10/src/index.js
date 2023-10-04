@@ -11,6 +11,7 @@ import { __dirname } from "./path.js";
 import path from "path";
 import { productsModel } from "./models/products.models.js";
 import { messagesModel } from "./models/messages.models.js";
+import { usersModel } from "./models/users.models.js";
 import prodsRouter from "./routes/products.routes.js";
 import cartsRouter from "./routes/carts.routes.js";
 import userRouter from "./routes/users.routes.js";
@@ -175,11 +176,15 @@ app.use("/api/users", userRouter);
 app.use("/api/sessions", sessionRouter);
 
 app.get("/static", auth, (req, res) => {
+  //Llamo a las cookies para pasarle los datos de usuario a la vista
+  const userDataCookie = req.cookies.userData;
+
   res.render("home", {
     css: "style.css",
     title: "Home",
     js: "home.js",
     listProds: prodsStatic,
+    userData: userDataCookie,
   });
 });
 
@@ -212,5 +217,13 @@ app.get("/singup", (req, res) => {
     css: "style.css",
     title: "Sing Up",
     js: "singup.js",
+  });
+});
+
+app.get("/logout", (req, res) => {
+  res.render("logout", {
+    css: "style.css",
+    title: "Logout",
+    js: "logout.js",
   });
 });
