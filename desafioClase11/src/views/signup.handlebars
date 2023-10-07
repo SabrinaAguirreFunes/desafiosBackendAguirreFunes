@@ -1,0 +1,67 @@
+<div class="container"><h1 style="margin-top: 60px">Registro de usuario</h1>
+
+  <form class="container m-3" action="/api/users/" method="POST">
+    <div class="row mb-3">
+
+      <label for="first_name" class="col-sm-2 col-form-label">Nombre</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          id="first_name"
+          required
+          class="form-control"
+          name="first_name"
+        />
+      </div>
+
+      <label for="last_name" class="col-sm-2 col-form-label">Apellido</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          id="last_name"
+          required
+          class="form-control"
+          name="last_name"
+        />
+      </div>
+
+      <label for="age" class="col-sm-2 col-form-label">Edad</label>
+      <div class="col-sm-10">
+        <input
+          type="number"
+          id="age"
+          required
+          class="form-control"
+          name="age"
+        />
+      </div>
+
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input
+          type="email"
+          id="email"
+          required
+          class="form-control"
+          name="email"
+        />
+      </div>
+      <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+      <div class="col-sm-10">
+        <input
+          type="password"
+          id="password"
+          required
+          class="form-control"
+          name="password"
+        />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrarse</button>
+  </form>
+
+  <div class="container"><p>¿Ya tenés una cuenta? Inicia sesión
+      <a href="/api/sessions/login">acá</a></p></div>
+
+</div>
